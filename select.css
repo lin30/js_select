@@ -1,0 +1,190 @@
+.gearAreaa {
+  font-family: Microsoft Yahei;
+  font-size: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  animation-fill-mode: both;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9900;
+}
+
+.areaaCtr {
+  vertical-align: middle;
+  background-color: #fff;
+  color: #000;
+  margin: 0;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 9901;
+}
+
+.areaaRoller {
+  padding: 10px 0;
+  display: flex;
+  width: 100%;
+  height: auto;
+  /*overflow: hidden;*/
+  background-color: transparent;
+  /*-webkit-mask: -webkit-gradient(linear, 0% 50%, 0% 100%, from(#debb47), to(rgba(36, 142, 36, 0)));
+  -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0));*/
+  -webkit-mask: -webkit-gradient(linear, 0% 100%, 0% 100%, from(#debb47), to(rgba(36, 142, 36, 0)));
+  -webkit-mask: -webkit-linear-gradient(top, #debb47 100%, rgba(36, 142, 36, 0));
+}
+
+.areaaRoller>div.mid {
+  font-size: 1.6em;
+  height: 10em;
+  float: left;
+  padding: 1.4em 0;
+  background-color: transparent;
+  position: relative;
+  /*overflow: hidden;*/
+  flex: 1
+}
+
+.areaaRoller>div .gear {
+  width: 100%;
+  float: left;
+  position: absolute;
+  z-index: 9902;
+  /*margin-top: 2em*/
+  padding-top: 2em;
+}
+
+.lareaaRollMask {
+  /*Android 4.2.1 not support*/
+  /*-webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(#debb47), to(rgba(36, 142, 36, 0)));
+  -webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0));*/
+  padding: 0;
+  overflow: hidden;
+}
+
+.areaaGrid {
+  position: relative;
+  top: 2em;
+  width: 100%;
+  height: 2em;
+  margin: 0;
+  box-sizing: border-box;
+  z-index: 0;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+.areaaRoller>div:nth-child(3) .areaGrid>div {
+  left: 42%
+}
+
+.tooth {
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  display: flex;
+  line-clamp: 1;
+  flex-direction: column;
+  overflow: hidden
+}
+
+.cell_box {
+  /*padding: 0 0.18rem;*/
+  /*position: relative;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+input.selectInput {
+  width: 80%;
+  border: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  background-color: transparent;
+  font-size: inherit;
+  color: inherit;
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+.slideInUp {
+  animation: slideInUp .3s;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0)
+  }
+  to {
+    transform: translate3d(0, 0, 0)
+  }
+}
+
+.areaaBtnBox:before,
+.areaaBtnBox:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  display: block;
+  background-color: #ececec;
+  z-index: 15;
+  transform: scaleY(0.33)
+}
+
+.areaaBtn {
+  font-size: 1.6em;
+  text-align: center;
+  line-height: 1em;
+  padding: .8em 1em;
+}
+
+.areaaBtnBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  /*background-color: #f37937;*/
+  position: relative;
+  z-index: 9903;
+}
+
+.areaaBtnBox:before {
+  left: 0;
+  top: 0;
+  transform-origin: 50% 20%
+}
+
+.areaaBtnBox:after {
+  left: 0;
+  bottom: 0;
+  transform-origin: 50% 70%
+}
+
+.areaaText {
+  font-size: 18px;
+}
+
+.lareaCancel {
+  color: #b2b2b2;
+}
+
+.lareaFinish {
+  color: #f37938;
+}
+.icon-arrow-abs {
+  position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -0.35rem
+}

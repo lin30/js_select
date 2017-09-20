@@ -9,7 +9,7 @@
       <div class="pec-item-foot click-icon-area icon-arrow-abs" @click.stop="showPicker">
           <i class="icon-arrow"></i>
       </div>-->
-      <div :class='gearAreaa' class="gearAreaa" v-show="show" @touchstart.prevent></div>
+      <div :class='gearAreaa' class="gearAreaa" v-show="show" @touchmove.prevent @touchstart.prevent="hideArea"></div>
     <!--</div>-->
 </template>
 
@@ -28,6 +28,10 @@
       item: {
         type: String,
         default: 'object'
+      },
+      maskClick: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -52,6 +56,12 @@
       document.addEventListener('input', (e) => { this.getVal(e) })
     },
     methods: {
+      hideArea(e) {
+        const isOut = e.target.classList.contains('gearAreaa')
+        if (this.maskClick && isOut) {
+          this.$emit('get-val')
+        }
+      },
       setLocation() {
         const val = this.selVal
         if (typeof val === 'string') {
@@ -71,6 +81,7 @@
       },
       destroyed () {
         document.removeEventListener('input', (e) => { this.getVal(e) })
+        this.picker.removeEvents()
       },
       render() {
         const _this = this
@@ -102,8 +113,3 @@
 </script>
 
 <style src="../../style/select.css"></style>
-<style>
-  input:active {
-    background: #ececec;
-  }
-</style>

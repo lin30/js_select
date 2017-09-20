@@ -46,6 +46,21 @@ MobileArea.prototype = {
       areaProvince.addEventListener('touchmove', gearTouchMove)
       areaProvince.addEventListener('touchend', gearTouchEnd)
     }
+    function removeEvents() {
+      var _self = this
+      var lareaCancel = _self.gearArea.querySelector('.lareaCancel')
+      lareaCancel.removeEventListener('touchstart', function(e) {
+        _self.close(e)
+      })
+      var lareaFinish = _self.gearArea.querySelector('.lareaFinish')
+      lareaFinish.removeEventListener('touchstart', function(e) {
+        _self.finish(e)
+      })
+      var areaProvince = _self.gearArea.querySelector('.areaProvince')
+      areaProvince.removeEventListener('touchstart', gearTouchStart)
+      areaProvince.removeEventListener('touchmove', gearTouchMove)
+      areaProvince.removeEventListener('touchend', gearTouchEnd)
+    }
     // 初始化插件默认值
     function areaCtrlInit() {
       _self.gearArea.querySelector('.areaProvince').setAttribute('val', 0)

@@ -18,6 +18,7 @@
 |item| String  |object| 区分数据源的格式 ['', ''] 或 [{id:'',name:''}]
 |selVal |Object | 无 | 可设置默认地址，格式对应 item 值 分别为'' 或 {id:'',name:''} 
 |show |Boolean | false | 表示选择框显示或隐藏
+|maskClick |Boolean | false | 点击遮罩是否隐藏选择器
 
 
 ### 设置默认地址

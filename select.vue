@@ -66,8 +66,6 @@
         this.show = true
       },
       getVal(e) {
-        // this.show = false
-        console.log(e.detail)
         this.$emit('get-val', e.detail)
       },
       hideArea() {
@@ -94,7 +92,7 @@
 
 </script>
 
-<style src="styles/components/select"></style>
+<style src="../../style/select.css"></style>
 <style>
   input:active {
     background: #ececec;

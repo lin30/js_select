@@ -1,9 +1,12 @@
 ## 选项选择器select
 
 ### usage
+```
+  import jsSel from './components/js_select'
+```
 
 ```
-        <sel title="居住地址" @get-val="sel" :show="showpkr" @show-picker="showPicker" :datas="selData"></sel>
+        <js-sel title="居住地址" :show="show" :datas="marriageType" :selVal="sel" @get-val="addressPick"></js-sel>
 ```
 
 
@@ -28,4 +31,3 @@
 |名字 |参数 |描述
 |:-|-|-|
 |getVal | 无 | 选择省市后,返回选中值value,key的回调函数
-|show-picker | 无 | 点击表单 控制选择框的隐显

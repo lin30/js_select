@@ -32,7 +32,6 @@ MobileArea.prototype = {
           </div>
         </div>
       </div>`
-      // document.body.appendChild(_self.gearArea)
       areaCtrlInit()
       var lareaCancel = _self.gearArea.querySelector('.lareaCancel')
       lareaCancel.addEventListener('touchstart', function(e) {
@@ -204,33 +203,27 @@ MobileArea.prototype = {
     var provinceText = areaProvince.childNodes[provinceVal].textContent
     var provinceCode = areaProvince.childNodes[provinceVal].getAttribute('ref')
     _self.value = [provinceVal]
-    var nameText = provinceText
-    var codeStr = provinceCode
-    // _self.trigger.innerHTML = nameText
-    // _self.trigger.style.color = '#333'
-    // _self.trigger.setAttribute('codeStr', codeStr)
       // 记录当前选择的地区
-    // this.selVal = {
-    //   name: _self.trigger.innerHTML,
-    //   id: _self.trigger.getAttribute('codeStr')
-    // }
+    this.selVal = {
+      name: provinceText,
+      id: provinceCode
+    }
 
     // var evt = new CustomEvent('input')
     var evt = document.createEvent('CustomEvent')
-    evt.initCustomEvent('input', true, true, { detail: { nameText, codeStr }})
+    evt.initCustomEvent('input', true, true, { name: provinceText, code: provinceCode })
     document.dispatchEvent(evt)
   },
   close: function(e) {
     e.preventDefault()
     var _self = this
-
     // var evt = new CustomEvent('input')
     var evt = document.createEvent('CustomEvent')
-    evt.initCustomEvent('input', true, true, { detail: '' })
+    evt.initCustomEvent('input', true, true, '')
     if (this.selVal) {
       _self.setLocation(this.selVal)
     }
-    _self.trigger.dispatchEvent(evt)
+    document.dispatchEvent(evt)
   },
   setGear: function(target, val) {
     const _self = this
@@ -246,15 +239,8 @@ MobileArea.prototype = {
     })
     const provInd = this.data.indexOf(provArr[0])
     this.setPos(provInd)
-      // 重新设置位置
-    this.trigger.innerHTML = selVal.name
-    this.trigger.style.color = '#333'
-    this.trigger.setAttribute('codeStr', selVal.id)
       // 记录当前选择的地区
-    this.selVal = {
-      name: this.trigger.innerHTML,
-      id: this.trigger.getAttribute('codeStr')
-    }
+    this.selVal = selVal
   },
   setPos: function(pInd) {
     const areaProvince = document.querySelector('.areaProvince')

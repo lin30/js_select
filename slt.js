@@ -8,7 +8,7 @@ MobileArea.prototype = {
     this.params = params
     this.data = params.data
     this.uuid = params.uuid
-    this.trigger = document.querySelector(params.trigger)
+    // this.trigger = document.querySelector(params.trigger)
     this.keys = params.keys
     this.bindEvent()
   },
@@ -181,10 +181,12 @@ MobileArea.prototype = {
     }
     gearChild[0].setAttribute('data-len', l)
     if (l > 0) {
-      var itemStr = ''
+      var itemStr = '', item_id = '', item_name = ''
       for (let i = 0; i < l; i++) {
-        itemStr += "<div class='tooth' ref='" + item[i][this.keys['id']]
-        itemStr += "'>" + item[i][this.keys['name']] + '</div>'
+        item_id = item[i][this.keys['id']]
+        item_name = item[i][this.keys['name']]
+        itemStr += "<div class='tooth' ref='" + item_id
+        itemStr += "'>" + item_name + '</div>'
       }
       gearChild[0].innerHTML = itemStr
       gearChild[0].style['-webkit-transform'] = 'translate3d(0,' + (-gearVal * 2) + 'em,0)'
@@ -202,7 +204,7 @@ MobileArea.prototype = {
     var provinceVal = parseInt(areaProvince.getAttribute('val'))
     var provinceText = areaProvince.childNodes[provinceVal].textContent
     var provinceCode = areaProvince.childNodes[provinceVal].getAttribute('ref')
-    _self.value = [provinceVal]
+    // _self.value = [provinceVal]
       // 记录当前选择的地区
     this.selVal = {
       name: provinceText,

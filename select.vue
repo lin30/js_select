@@ -1,5 +1,5 @@
 <template>
-    <div class="cell_box">
+    <!--<div class="cell_box">-->
       <!--<div class="pec-item-head" :class="titleStyle">
         <p style="font-size:0.3rem; color: #666;">{{title}}</p>
       </div>
@@ -10,7 +10,7 @@
           <i class="icon-arrow"></i>
       </div>-->
       <div :class='gearAreaa' class="gearAreaa" v-show="show" @touchstart.prevent></div>
-    </div>
+    <!--</div>-->
 </template>
 
 <script>
@@ -22,16 +22,12 @@
         type: Array
       },
       show: false,
-      titleStyle: String,
-      title: {
-        type: String,
-        default: '居住地址'
-      },
       selVal: {
-        type: Object
+        type: [Object, String]
       },
-      otitle: {
-        type: String
+      item: {
+        type: String,
+        default: 'object'
       }
     },
     data() {
@@ -45,7 +41,8 @@
       }
     },
     watch: {
-      selVal() {
+      selVal(v) {
+        if (!v) return
         this.setLocation()
       }
     },
@@ -56,34 +53,46 @@
     },
     methods: {
       setLocation() {
-        if (this.selVal && this.selVal.id) {
-          this.picker.setLocation(this.selVal)
+        const val = this.selVal
+        if (typeof val === 'string') {
+          const obj = {
+            id: val,
+            name: val
+          }
+          this.picker.setLocation(obj)
+          return
         }
-      },
-      showPicker() {
-        const inputArr = document.getElementsByTagName('input')
-        for (var i = 0; i < inputArr.length; i++) { inputArr[i].blur() }
-        this.show = true
+        if (typeof val === 'object' && val.id) {
+          this.picker.setLocation(val)
+        }
       },
       getVal(e) {
         this.$emit('get-val', e.detail)
-      },
-      hideArea() {
-        this.show = false
       },
       destroyed () {
         document.removeEventListener('input', (e) => { this.getVal(e) })
       },
       render() {
         const _this = this
+        // 根据传入的 item 类型,区分数据源是 Array<String>或 Array<Object>
+        let keys = {
+          id: 'id',
+          name: 'name'
+        }, datas = []
+        if (this.item === 'string') {
+          _this.datas.forEach((one) => {
+            datas.push({
+              id: one,
+              name: one
+            })
+          })
+        } else {
+          datas = _this.datas
+        }
         this.picker = new Picker()
         this.picker.init({
-          'trigger': `#name-box-${this.uuid}`,
-          'keys': {
-            id: 'id',
-            name: 'name'
-          },
-          'data': _this.datas,
+          'keys': keys,
+          'data': datas,
           'uuid': _this.uuid
         })
       }

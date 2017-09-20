@@ -15,7 +15,8 @@
 |:-|-|-|-|
 |title |String | '居住地址' |左侧标题
 |datas| Array |无| 数据源
-|selVal |Object | 无 | 可设置默认地址，格式为{id:'',name:''} 
+|item| String  |object| 区分数据源的格式 ['', ''] 或 [{id:'',name:''}]
+|selVal |Object | 无 | 可设置默认地址，格式对应 item 值 分别为'' 或 {id:'',name:''} 
 |show |Boolean | false | 表示选择框显示或隐藏
 
 

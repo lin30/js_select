@@ -220,10 +220,12 @@ MobileArea.prototype = {
     var provinceText = areaProvince.childNodes[provinceVal].textContent
     var provinceCode = areaProvince.childNodes[provinceVal].getAttribute('ref')
     // _self.value = [provinceVal]
-      // 记录当前选择的地区
-    this.selVal = {
-      name: provinceText,
-      id: provinceCode
+    if (provinceText) {
+        // 记录当前选择的地区
+      this.selVal = {
+        name: provinceText,
+        id: provinceCode
+      }
     }
 
     // var evt = new CustomEvent('input')

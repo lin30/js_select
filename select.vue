@@ -55,6 +55,10 @@
       this.setLocation()
       document.addEventListener('input', (e) => { this.getVal(e) })
     },
+    destroyed () {
+      document.removeEventListener('input', (e) => { this.getVal(e) })
+      this.picker.removeEvents()
+    },
     methods: {
       hideArea(e) {
         const isOut = e.target.classList.contains('gearAreaa')
@@ -78,10 +82,6 @@
       },
       getVal(e) {
         this.$emit('get-val', e.detail)
-      },
-      destroyed () {
-        document.removeEventListener('input', (e) => { this.getVal(e) })
-        this.picker.removeEvents()
       },
       render() {
         const _this = this
